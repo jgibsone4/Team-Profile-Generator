@@ -13,7 +13,7 @@ const manager = require ("./lib/manager");
 //     name: "start",
 //     message:
 //       "This will generate a README file after you enter some information",
-  },
+ // },
    {
     type: "prompt", //EE name
     name: "name",
