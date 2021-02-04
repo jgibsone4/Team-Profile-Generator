@@ -105,11 +105,13 @@ function startHtml() {
       console.log(err);
     }
   });
+}
   //comment out additional writeFile
   //  fs.writeFile(fileName, data, (err) =>
   //      if (err) new Error(err);
   // console.log("Not Perfect");}
 
+  //fixed function
   function addHtml(member) {
     return new Promise(function(resolve, reject) {
       //fixed read issue
@@ -122,9 +124,10 @@ function startHtml() {
 
       if (role === "Engineer") {
         const gitHub = member.getGithub();
-        data = `<div class="col-4">
-           <h1 class="card-header">${name}Engineer</h1>
-           <class="list group list-group-flush>
+        data = `<div class="col-6">
+        <div class="card mx-auto mb-3" style="width: 18rem">
+        <h5 class="card-header">${name}<br /><br />Engineer</h5>
+        <ul class="list-group list-group-flush">
              <li class="list-group-item">ID: ${id}</li>
              <li class="list-group-item">Email Address: ${email}</li>
              <li class="list-group-item">GitHub: ${gitHub}</li>
@@ -133,20 +136,22 @@ function startHtml() {
       } else if (role === "Intern") {
         const school = member.getSchool();
         //fixed problem
-        data = `<div class="col-4"> 
-         <class="list group list-group-flush>
-         <ul class="list-group list-group-flush">
+        data = `<div class="col-6">
+        <div class="card mx-auto mb-3" style="width: 18rem">
+        <h5 class="card-header">${name}<br /><br />Intern</h5>
+        <ul class="list-group list-group-flush">
          <li class="list-group-item">ID: ${id}</li>
          <li class="list-group-item">Email Address: ${email}</li>
          <li class="list-group-item">School: ${school}</li>
          </ul>
          </div>
          </div>`;
-      } else {
+      } else {  
         const officePhone = member.getOfficeNumber();
-        data = `<div class="col-4">
-           <class="list group list-group-flush>
-             <ul class="list-group list-group-flush">
+        data = `<div class="col-6">
+        <div class="card mx-auto mb-3" style="width: 18rem">
+        <h5 class="card-header">${name}<br /><br />Manager</h5>
+        <ul class="list-group list-group-flush">
          <li class="list-group-item">ID: ${id}</li>
          <li class="list-group-item">Email Address: ${email}</li>
          <li class="list-group-item">Office Phone: ${officePhone}</li>
@@ -165,21 +170,20 @@ function startHtml() {
     });
 
     //rewrite finish
-
+  }
     function finishHtml() {
-      const html = `</div>
-       </div>
-       </body>
-       </html>`;
+      const html = ` </div>
+      </div>
+      
+  </body>
+  </html>`;
        //appenddata to file
-      fs.appendFile("./src/team.html", html, function (err) {
+       fs.appendFile("./src/myteam.html",  html, function (err) {
         if (err) {
           console.log(err);
-        }
-      });
-    }
-  }
+      };
+  });
+  console.log("end");
 }
-
 
 initTeam();
